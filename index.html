@@ -2,7 +2,13 @@
 <html>
 <head></head>
 <body>
+<p style="margin: 10px">
+  <button class="btn btn-lg btn-primary" onclick="readWriteNfc()">Test NFC Read/Write</button>
+</p>
 
+<pre id="log"></pre>
+
+<p style="margin: 10px"><small>Based on the code snippets from <a href="https://w3c.github.io/web-nfc/#examples">specification draft</a>.</small></p>
 <script>
 function readWriteNfc() {
   if ('nfc' in navigator) {
