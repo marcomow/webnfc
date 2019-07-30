@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded',init);
 
 function init(){
     navigator.nfc.watch(function(message){
-        document.getElementById('log').innerHTML += message;
+       alert(message);
         
     });
     
