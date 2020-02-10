@@ -8,7 +8,7 @@
 <script>
 document.addEventListener('DOMContentLoaded',init);
 
-function readTag() {
+async function readTag() {
   if ("NDEFReader" in window) {
     const reader = new NDEFReader();
     try {
