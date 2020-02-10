@@ -2,6 +2,7 @@
 <html>
 <head></head>
 <body>
+    <button onclick="readTag()">enable</button>
 <pre id="log"></pre>
 
 <script>
@@ -13,6 +14,26 @@ function init(){
         
     });
     
+}
+function readTag() {
+  if ("NDEFReader" in window) {
+    const reader = new NDEFReader();
+    try {
+      await reader.scan();
+      reader.onreading = event => {
+        const decoder = new TextDecoder();
+        for (const record of event.message.records) {
+          consoleLog("Record type:  " + record.recordType);
+          consoleLog("MIME type:    " + record.mediaType);
+          consoleLog("=== data ===\n" + decoder.decode(record.data));
+        }
+      }
+    } catch(error) {
+      consoleLog(error);
+    }
+  } else {
+    consoleLog("Web NFC is not supported.");
+  }
 }
 
 </script>
