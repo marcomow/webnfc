@@ -17,7 +17,7 @@ async function readTag() {
       reader.onreading = event => {
         const decoder = new TextDecoder();
         for (const record of event.message.records) {
-            document.querySelector('#log').text = JSON.stringify(event);
+            document.querySelector('#log').innerHTML = JSON.stringify(event);
         }
       }
     } catch(error) {
