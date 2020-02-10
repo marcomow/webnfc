@@ -3,18 +3,11 @@
 <head></head>
 <body>
     <button onclick="readTag()">enable</button>
-<pre id="log"></pre>
+<div id="log"></div>
 
 <script>
 document.addEventListener('DOMContentLoaded',init);
 
-function init(){
-    navigator.nfc.watch(function(message){
-       alert(message);
-        
-    });
-    
-}
 function readTag() {
   if ("NDEFReader" in window) {
     const reader = new NDEFReader();
@@ -23,9 +16,7 @@ function readTag() {
       reader.onreading = event => {
         const decoder = new TextDecoder();
         for (const record of event.message.records) {
-          consoleLog("Record type:  " + record.recordType);
-          consoleLog("MIME type:    " + record.mediaType);
-          consoleLog("=== data ===\n" + decoder.decode(record.data));
+            document.querySelector('#log').text = JSON.stringify(event);
         }
       }
     } catch(error) {
