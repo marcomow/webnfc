@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
 <body>
     <button onclick="readTag()">enable</button>
 <div id="log"></div>
 
 <script>
-document.addEventListener('DOMContentLoaded',init);
 
 async function readTag() {
   if ("NDEFReader" in window) {
